@@ -8,4 +8,6 @@ group :development, :test do
   gem 'sqlite3-ruby'
   gem 'rspec-rails', '~> 2.5.0'
   gem 'factory_girl_rails'
+  gem 'watchr'
+  gem 'spork', '~> 0.9.0.rc'
 end

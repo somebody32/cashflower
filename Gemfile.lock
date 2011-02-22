@@ -84,6 +84,7 @@ GEM
       activesupport (~> 3.0)
       railties (~> 3.0)
       rspec (~> 2.5.0)
+    spork (0.9.0.rc3)
     sqlite3 (1.3.3)
     sqlite3-ruby (1.3.3)
       sqlite3 (>= 1.3.3)
@@ -93,6 +94,7 @@ GEM
     tzinfo (0.3.24)
     warden (1.0.3)
       rack (>= 1.0.0)
+    watchr (0.7)
 
 PLATFORMS
   ruby
@@ -103,4 +105,6 @@ DEPENDENCIES
   jquery-rails
   rails (= 3.0.4)
   rspec-rails (~> 2.5.0)
+  spork (~> 0.9.0.rc)
   sqlite3-ruby
+  watchr
