@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Cashflower</title>
+
+  <link href="/stylesheets/jqtouch/jqtouch.css" media="screen" rel="stylesheet" type="text/css" />
+  <link href="/stylesheets/jqtouch/themes/apple/theme.css" media="screen" rel="stylesheet" type="text/css" />
+
+  <script src="/javascripts/jquery.min.js" type="text/javascript"></script>
+  <script src="/javascripts/jqtouch.js" type="text/javascript"></script>
+
+  <script>
+    var jQT = new $.jQTouch({
+      icon:    "/images/jqtouch/icon_57x57.png",
+      iconPad: "/images/jqtouch/icon_72x72.png",
+      icon4:   "/images/jqtouch/icon_114x114.png",
+      startupScreen: "/images/jqtouch/startup.png",
+      preloadImages: [
+      '/images/jqtouch/themes/apple/img/toolButton.png',
+      '/images/jqtouch/themes/apple/img/backButton.png',
+      '/images/jqtouch/themes/apple/img/redButton.png',
+      '/images/jqtouch/themes/apple/img/greenButton.png',
+      '/images/jqtouch/themes/apple/img/activeButton.png',
+      '/images/jqtouch/themes/apple/img/toolbar.png',
+      '/images/jqtouch/themes/apple/img/pinstripes.png',
+      '/images/jqtouch/themes/apple/img/spinner.gif',
+      '/images/jqtouch/themes/apple/img/listArrowSel.png'
+      ]
+    });
+  </script>
+
+  <%= csrf_meta_tag %>
+</head>
+<body id="jqt">
+
+  <%= yield %>
+
+</body>
+</html>
+
