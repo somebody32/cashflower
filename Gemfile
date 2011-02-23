@@ -10,4 +10,6 @@ group :development, :test do
   gem 'factory_girl_rails'
   gem 'watchr'
   gem 'spork', '~> 0.9.0.rc'
+  gem 'email_spec'
+  gem 'capybara', "~> 0.4.1"
 end

@@ -15,13 +15,5 @@ describe StaticController do
 
       response.should render_template("index")
     end
-
-    it "should render personal layout for iphone" do
-      request.env["HTTP_USER_AGENT"] = 'iphone'
-      get :index
-
-      ApplicationController.superclass.view_paths.dup.should include("app/views/ios/")
-    end
   end
-
 end
