@@ -6,4 +6,12 @@ class User < ActiveRecord::Base
 
   # Setup accessible (or protected) attributes for your model
   attr_accessible :email, :password, :password_confirmation, :remember_me
+
+  after_create :send_password_mail
+
+  private
+
+  def send_password_mail
+    NotificationMailer.generated_password(self).deliver
+  end
 end

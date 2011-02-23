@@ -1,0 +1,17 @@
+<div>
+  <div class="toolbar">
+    <h1>CashFlower</h1>
+  </div>
+
+  <%= form_for :user, :url => user_registration_path, :html => { :class => "login_form" } do |f| %>
+    <%= devise_error_messages! %>
+    <ul class="individual">
+      <li class="egoist">
+        <%= f.label :email %>
+        <%= f.text_field :email %>
+
+        <%= f.submit "Sign up", :class => "egoist_button" %>
+      </li>
+    </ul>
+  <% end %>
+</div>

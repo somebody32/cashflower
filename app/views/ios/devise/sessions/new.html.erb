@@ -1,0 +1,18 @@
+<%= form_for :user, :url => user_session_path, :html => { :class => "login_form" } do |form| %>
+  <ul class="individual">
+    <li class="egoist">
+    <%= form.label :email %>
+    <%= form.text_field :email, :maxlength => 35 %>
+    <%= form.label :password %>
+    <%= form.password_field :password, :maxlength => 35 %>
+    <%= form.hidden_field :remember_me, :value => "1" %>
+    <%= form.submit "Enter", :class => "egoist_button" %>
+    </li>
+  </ul>
+<% end %>
+
+<ul class="individual">
+  <li><%= link_to "What's that?", "#about" %></li>
+  <li><%= link_to "Registration", new_user_registration_path %></li>
+</ul>
+
