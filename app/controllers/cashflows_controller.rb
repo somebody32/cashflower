@@ -1,6 +1,7 @@
 class CashflowsController < ApplicationController
   def index
-    render :json => { :balance => current_user.balance, :cashflows => current_user.cashflows.to_json }
+    @cashflows = current_user.cashflows.order("created_at DESC").to_json(:only => [:value, :note])
+    render :json => { :balance => current_user.balance, :cashflows => @cashflows }
   end
 
   def create

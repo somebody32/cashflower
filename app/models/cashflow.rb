@@ -6,7 +6,7 @@ class Cashflow < ActiveRecord::Base
   attr_accessible :value, :note
 
   # Hooks
-  after_save :update_users_balance
+  before_save :update_users_balance
 
   # Validations
   validates :value, :presence => true, :numericality => true
@@ -15,7 +15,8 @@ class Cashflow < ActiveRecord::Base
   private
 
   def update_users_balance
-    user.increment(:balance, value)
+    new_balance = user.balance + value.to_f
+    user.update_attribute(:balance, new_balance) #strange, but user.increment isn't working
   end
 
   def correct_value

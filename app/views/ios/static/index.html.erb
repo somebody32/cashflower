@@ -5,7 +5,7 @@
   </div>
 
   <ul class="individual">
-    <li class="egoist balance"><%= image_tag "coin.png" %><span>$0.0</span></li>
+    <li class="egoist balance"><%= image_tag "coin.png" %><span id="currency">$</span><span id="balance">0.0</span></li>
   </ul>
 
   <ul class="individual">
@@ -22,13 +22,15 @@
 <div id="add">
   <div class="toolbar">
     <h1>New cashflow</h1>
-    <a class="cancel slidedown" href="#">Cancel</a>
+    <a class="cancel slidedown" id="cancel_flow" href="#">Cancel</a>
     <a class="button" id="send_flow">Add</a>
   </div>
 
   <ul class="form">
-    <li><input id="value" name="value" type="text" value="" placeholder="Value"></li>
-    <li><textarea id="note" name="note" placeholder="Short note"></textarea></li>
+    <form id="new_flow">
+      <li><input id="value" name="value" type="text" value="" placeholder="Value"></li>
+      <li><textarea id="note" name="note" placeholder="Short note"></textarea></li>
+    </form>
   </ul>
 </div>
 
