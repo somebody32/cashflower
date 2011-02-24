@@ -780,27 +780,6 @@ input[type='submit'] {
   background: url(../../../../images/jqtouch/themes/apple/img/spinner.gif) 50% 50% no-repeat;
 }
 
-#jqt .delete_tasks, #jqt .complete_tasks {
-  font-size: 12px;
-  padding: 12px 30px 12px 30px;
-  /*font-weight: normal;*/
-  text-decoration: none;
-  text-shadow: none;
-}
-
-#jqt .delete_tasks {
-  margin-right: 10px;
-}
-
-#jqt .task_link {
-  display: inline !important;
-  margin-left: 3px;
-}
-
-#jqt .task_box {
-  display: none;
-}
-
 #jqt .info {
   position: absolute;
   bottom: 0;
@@ -808,17 +787,40 @@ input[type='submit'] {
   padding: 15px 0px;
 }
 
-#jqt #action_panel {
-  width: 100%;
-  padding-top: 17px;
-  padding-left: 0px;
-}
-
 #user_email, #user_password {
   border:1px solid gray !important;
   border-radius: 4px;
 }
 
-#spacer {
-  height: 50px;
+#jqt li.balance {
+  color: #666 !important;
+  font: bold 17px "Helvetica Neue", Helvetica !important;
+  padding: 5px 10px !important;
+}
+
+#jqt li.balance img, #jqt .action_button img{
+  float: center;
+  position:relative;
+  left:-5px;
+}
+
+#jqt li.balance span, #jqt .action_button span {
+  position: relative;
+  top: -7px !important;
+}
+
+#jqt .action_button span {
+  top: -7px !important;
+}
+
+#jqt .action_button {
+ padding: 5px 10px !important;
+}
+
+#income_link, #jqt .income_history a  {
+  color: green !important;
+}
+
+#outcome_link, #jqt .outcome_history a {
+  color: red !important;
 }
