@@ -128,6 +128,8 @@ $(function() {
     }
   }
 
+  sendFlows();
+
   $(window).bind("online", sendFlows);
 
   // Viewing cashflows
