@@ -1,0 +1,41 @@
+<div>
+  <div class="toolbar">
+    <h1>CashFlower</h1>
+    <%= link_to "Logout", :destroy_user_session, :class => "button leftButton" %>
+  </div>
+
+  <ul class="individual">
+    <li class="egoist balance"><%= image_tag "coin.png" %><span id="currency">$</span><span id="balance">0.0</span></li>
+  </ul>
+
+  <ul class="individual">
+    <li class="action_button"><a href="#add" class="slideup" id="income_link"><%= image_tag "income.png"%><span>Income</span></a></li>
+    <li class="action_button"><a href="#add" class="slideup" id="outcome_link"><%= image_tag "outcome.png" %><span>Outcome</span></a></li>
+  </ul>
+
+  <h2 class="lined_up">History</h2>
+  <ul id="history">
+    <li><em>Loading items...</em></li>
+  </ul>
+
+</div>
+
+<div id="add">
+  <div class="toolbar">
+    <h1>New cashflow</h1>
+    <a class="cancel slidedown" id="cancel_flow" href="#">Cancel</a>
+    <a class="button" id="send_flow">Add</a>
+  </div>
+
+  <ul class="form">
+    <form id="new_flow">
+      <li><input id="value" name="value" type="text" value="" placeholder="Value"></li>
+      <li><textarea id="note" name="note" placeholder="Short note"></textarea></li>
+    </form>
+  </ul>
+</div>
+
+<div id="show">
+</div>
+
+<script src="/javascripts/application.js" type="text/javascript"></script>
