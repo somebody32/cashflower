@@ -10,7 +10,7 @@ describe CashflowsController do
       get :index
 
       response.should be_success
-      JSON.parse(response.body).should include({ "balance" => "0.0", "cashflows" => user.cashflows.to_json })
+      JSON.parse(response.body).should include({ "balance" => user.balance.to_s, "cashflows" => user.cashflows.to_json(:only => [:id, :value, :note]) })
     end
   end
 

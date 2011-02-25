@@ -74,6 +74,7 @@ GEM
     rack (1.2.1)
     rack-mount (0.6.13)
       rack (>= 1.0.0)
+    rack-offline (0.6.1)
     rack-test (0.5.7)
       rack (>= 1.0)
     rails (3.0.4)
@@ -132,6 +133,7 @@ DEPENDENCIES
   email_spec
   factory_girl_rails
   jquery-rails
+  rack-offline
   rails (= 3.0.4)
   rspec-rails (~> 2.5.0)
   spork (~> 0.9.0.rc)
