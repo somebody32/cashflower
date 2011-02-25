@@ -95,8 +95,8 @@ $(function() {
 
     sendFlows();
 
-    $("#new_flow")[0].reset();
     jQT.goBack();
+    $("#new_flow")[0].reset();
   });
 
   function updateBalance(new_balance) {
@@ -157,5 +157,7 @@ $(function() {
     if (flow) {
       $("#show").html(show_tmpl(flow));
     }
+    jQT.goTo("#show");
+    return false;
   });
 });
