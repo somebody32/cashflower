@@ -16,9 +16,15 @@ Handlebars.registerHelper('flow_type', function(context) {
 
 Handlebars.registerHelper('flow_value', function(context) {
   if (new String(context.value).slice(-2) == ".0") {
-    return context.value.slice(0, -2);
+    var value = context.value.slice(0, -2);
   } else {
-    return context.value;
+    var value = context.value;
+  }
+
+  if (value < 0) {
+    return "-$" + Math.abs(value);
+  } else {
+    return "$" + value;
   }
 });
 
@@ -32,10 +38,10 @@ Handlebars.registerHelper('flow_note', function(context) {
 
 
 
-var flow_history_link_src  = '{{#cashflows}}{{#cashflow}}<li class="arrow"><span class={{{flow_type this}}}><a class="show_link" id="{{id}}" href="#show">${{{ flow_value this }}</a></span></li>{{/cashflow}}{{/cashflows}}';
+var flow_history_link_src  = '{{#cashflows}}{{#cashflow}}<li class="arrow"><span class={{{flow_type this}}}><a class="show_link" id="{{id}}" href="#show">{{{ flow_value this }}</a></span></li>{{/cashflow}}{{/cashflows}}';
 var flow_history_link  = Handlebars.compile(flow_history_link_src);
 
-var show_tmpl_src = '<div class="toolbar"><h1>Cashflow Info</h1><a class="back" href="#">Back</a></div>{{#cashflow}}<ul><li><span class={{{flow_type this}}}>${{value}}</span></li><li>{{{flow_note this}}}</li></ul>{{/cashflow}}';
+var show_tmpl_src = '<div class="toolbar"><h1>Cashflow Info</h1><a class="back" href="#">Back</a></div>{{#cashflow}}<ul><li><span class={{{flow_type this}}}>{{{flow_value this}}}</span></li><li>{{{flow_note this}}}</li></ul>{{/cashflow}}';
 var show_tmpl = Handlebars.compile(show_tmpl_src);
 
 // Vars
