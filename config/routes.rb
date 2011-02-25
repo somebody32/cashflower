@@ -1,6 +1,6 @@
 Cashflower::Application.routes.draw do
 
-  match "/iphone.manifest" => IPHONE_CACHE_MANIFEST
+  #match "/iphone.manifest" => IPHONE_CACHE_MANIFEST
 
   resources :cashflows, :only => [:index, :create]
 
