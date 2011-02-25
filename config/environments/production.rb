@@ -46,18 +46,4 @@ Cashflower::Application.configure do
 
   # Send deprecation notices to registered listeners
   config.active_support.deprecation = :notify
-
-  HOST = "cashflower.heroku.com"
-  config.action_mailer.default_url_options = { :host => HOST }
-  config.action_mailer.delivery_method = :smtp
-  config.action_mailer.raise_delivery_errors = true
-  config.action_mailer.smtp_settings = {
-    :adress => "smtp.gmail.com",
-    :port => 587,
-    :user_name  => "cashflowerapp@gmail.com",
-    :password  => "cashflower61611",
-    :authentication  => :plain,
-    :enable_starttls_auto => true
-  }
-
 end
