@@ -22,9 +22,21 @@ Handlebars.registerHelper('flow_value', function(context) {
   }
 });
 
+Handlebars.registerHelper('flow_note', function(context) {
+  if (context.note.length > 0) {
+    return context.note;
+  } else {
+    return "No note specified";
+  }
+});
 
-var flow_history_link_src  = '{{#cashflows}}{{#cashflow}}<li class="arrow"><span class={{{flow_type this}}}><a id="{{id}}" href="#">${{{ flow_value this }}</a></span></li>{{/cashflow}}{{/cashflows}}';
+
+
+var flow_history_link_src  = '{{#cashflows}}{{#cashflow}}<li class="arrow"><span class={{{flow_type this}}}><a class="show_link" id="{{id}}" href="#show">${{{ flow_value this }}</a></span></li>{{/cashflow}}{{/cashflows}}';
 var flow_history_link  = Handlebars.compile(flow_history_link_src);
+
+var show_tmpl_src = '<div class="toolbar"><h1>Cashflow Info</h1><a class="back" href="#">Back</a></div>{{#cashflow}}<ul><li><span class={{{flow_type this}}}>${{value}}</span></li><li>{{{flow_note this}}}</li></ul>{{/cashflow}}';
+var show_tmpl = Handlebars.compile(show_tmpl_src);
 
 // Vars
 var current_flow_type = "";
@@ -40,8 +52,7 @@ $(function() {
   $.retrieveJSON("/cashflows.json", function(data) {
     var local_flows = $.parseJSON(localStorage["pendingFlows"]);
 
-    var flows = $.parseJSON(data.cashflows.concat(local_flows));
-    console.log(flows);
+    var flows = $.parseJSON(data.cashflows).concat(local_flows);
     $("#history").html(flow_history_link({ cashflows: flows }));
 
     updateBalance(data.balance);
@@ -103,7 +114,8 @@ $(function() {
           flow.cashflow.id = data.id;
 
           var cache = $.parseJSON(localStorage["offline.jquery:/cashflows.json:"]);
-          cache.cashflows = $.parseJSON(cache.cashflows).concat(flow);
+          cache.cashflows = JSON.stringify($.parseJSON(cache.cashflows).concat(flow));
+          console.log(cache);
           localStorage["offline.jquery:/cashflows.json:"] = JSON.stringify(cache);
 
           var local_flows = $.parseJSON(localStorage["pendingFlows"]);
@@ -117,4 +129,33 @@ $(function() {
   }
 
   $(window).bind("online", sendFlows);
+
+  // Viewing cashflows
+  $("#jqt").delegate("a.show_link", "click", function() {
+    var id = $(this).attr('id');
+    var local_flows = $.parseJSON(localStorage["pendingFlows"]);
+
+    var flow = null;
+    $.each(local_flows, function() {
+      if (this.cashflow.id == id) {
+        flow = this;
+        return true;
+      }
+    });
+
+    if (!flow) {
+      var cache = $.parseJSON(localStorage["offline.jquery:/cashflows.json:"]);
+      cache.cashflows = $.parseJSON(cache.cashflows);
+      $.each(cache.cashflows, function() {
+        if (this.cashflow.id == id) {
+          flow = this;
+          return true;
+        }
+      });
+    }
+
+    if (flow) {
+      $("#show").html(show_tmpl(flow));
+    }
+  });
 });

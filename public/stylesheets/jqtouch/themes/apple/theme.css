@@ -817,10 +817,10 @@ input[type='submit'] {
  padding: 5px 10px !important;
 }
 
-#income_link, #jqt .income_history a  {
+#income_link, #jqt .income_history, #jqt .income_history a  {
   color: green !important;
 }
 
-#outcome_link, #jqt .outcome_history a {
+#outcome_link, #jqt .outcome_history, #jqt .outcome_history a {
   color: red !important;
 }
