@@ -40,8 +40,9 @@ $(function() {
   $.retrieveJSON("/cashflows.json", function(data) {
     var local_flows = $.parseJSON(localStorage["pendingFlows"]);
 
-    $("#history").html(flow_history_link({ cashflows: $.parseJSON(data.cashflows) }));
-    $("#history").prepend(flow_history_link({ cashflows: local_flows }));
+    var flows = $.parseJSON(data.cashflows.concat(local_flows));
+    console.log(flows);
+    $("#history").html(flow_history_link({ cashflows: flows }));
 
     updateBalance(data.balance);
   });
@@ -98,12 +99,22 @@ $(function() {
       if (local_flows.length > 0) {
         var flow = local_flows[0];
         $.post("/cashflows", { cashflow: flow.cashflow }, function(data) {
+          $("#" + flow.cashflow.id).attr('id', data.id);
+          flow.cashflow.id = data.id;
+
+          var cache = $.parseJSON(localStorage["offline.jquery:/cashflows.json:"]);
+          cache.cashflows = $.parseJSON(cache.cashflows).concat(flow);
+          localStorage["offline.jquery:/cashflows.json:"] = JSON.stringify(cache);
+
           var local_flows = $.parseJSON(localStorage["pendingFlows"]);
           local_flows.shift();
           localStorage["pendingFlows"] = JSON.stringify(local_flows);
+
           setTimeout(sendFlows, 100);
         });
       }
     }
   }
+
+  $(window).bind("online", sendFlows);
 });
