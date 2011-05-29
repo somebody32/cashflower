@@ -1,6 +1,6 @@
 require 'rubygems'
 require 'spork'
-require "email_spec"
+#require "email_spec"
 
 ENV["RAILS_ENV"] ||= 'test'
 
@@ -14,8 +14,8 @@ Spork.prefork do
     config.mock_with :rspec
 
     config.include Devise::TestHelpers, :type => :controller
-    config.include EmailSpec::Helpers, :type => :mailer
-    config.include EmailSpec::Matchers, :type => :mailer
+    #config.include EmailSpec::Helpers, :type => :mailer
+    #config.include EmailSpec::Matchers, :type => :mailer
 
     # If you're not using ActiveRecord, or you'd prefer not to run each of your
     # examples within a transaction, remove the following line or assign false
