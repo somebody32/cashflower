@@ -16,4 +16,3 @@ config/*.yml
 rerun.txt
 pickle-email-*.html
 *.DS_Store
-/config/initializers/google.rb
